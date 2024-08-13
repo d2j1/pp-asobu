@@ -1,6 +1,6 @@
-package com.httpseven;
+package com.httpserver;
 
-public class HttpSeven {
+public class HttpServer {
 
     public static void main(String[] args) {
         System.out.println("This is testing");
