@@ -10,8 +10,8 @@ public class HttpServer {
         ConfigurationManager.getInstance().loadConfigurationFile("src/main/resources/http.json");
         Configuration conf = ConfigurationManager.getInstance().getCurrentConfiguration();
 
-        System.out.println(conf.getPort());
-        System.out.println(conf.getWebroute());
+//        System.out.println(conf.getPort());
+//        System.out.println(conf.getWebroute());
 
     }
 
