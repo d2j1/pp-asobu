@@ -34,32 +34,19 @@ public class ServerListenerThread extends Thread {
                 Socket socket = serverSocket.accept();
                 LOGGER.info("Connection accepted " + socket.getInetAddress());
 
-                InputStream inputStream = socket.getInputStream();
-                OutputStream outputStream = socket.getOutputStream();
-
-                // read the request
-
-                // write the response
-                String html = "<html> <head><title> Abuso Server</title> </head> <body>This is the response returned by the abuso server </body></html>";
-
-                final String CRLF = "\n\r";
-
-                String response =
-                        "HTTP/1.1 200 OK" + CRLF + // status line - it has http version response_code response_message
-                                "Content-Length: " + html.getBytes().length + CRLF // header
-                                + CRLF +
-                                html +
-                                CRLF + CRLF;
-
-                outputStream.write(response.getBytes());
-
-                inputStream.close();
-                ;
-                outputStream.close();
+                HttpConnectionWorkerThread workerThread = new HttpConnectionWorkerThread(socket);
+                workerThread.start();
             }
 
+
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            LOGGER.info("Problem with setting socket "+ e.getMessage() );
+        }finally {
+            if( serverSocket != null ) {
+                try {
+                    serverSocket.close();
+                } catch (IOException e) {}
+            }
         }
 
     }
