@@ -2,6 +2,7 @@ package com.httpserver;
 
 import com.httpserver.config.Configuration;
 import com.httpserver.config.ConfigurationManager;
+import com.httpserver.core.ServerListenerThread;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -20,31 +21,8 @@ public class HttpServer {
         System.out.println(conf.getWebroute());
 
         try {
-            ServerSocket serverSocket = new ServerSocket(conf.getPort());
-            Socket socket = serverSocket.accept();
-            InputStream inputStream = socket.getInputStream();
-            OutputStream outputStream = socket.getOutputStream();
-
-            // read the request
-
-            // write the response
-            String html = "<html> <head><title> Abuso Server</title> </head> <body>This is the response returned by the abuso server </body></html>";
-
-            final String CRLF = "\n\r";
-
-            String response =
-                    "HTTP/1.1 200 OK" + CRLF + // status line - it has http version response_code response_message
-                    "Content-Length: "+ html.getBytes().length + CRLF // header
-                    + CRLF +
-                            html +
-                            CRLF + CRLF;
-
-            outputStream.write(response.getBytes());
-
-            inputStream.close();;
-            outputStream.close();
-
-
+            ServerListenerThread serverListenerThread = new ServerListenerThread(conf.getPort(), conf.getWebroute());
+            serverListenerThread.start();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
