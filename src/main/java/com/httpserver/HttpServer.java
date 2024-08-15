@@ -9,16 +9,20 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.logging.Logger;
 
 public class HttpServer {
 
+    private static final Logger LOGGER = Logger.getLogger(HttpServer.class.getName());
     public static void main(String[] args) {
-        System.out.println("Server Starting.....");
+
+        LOGGER.info("Starting server....");
+
         ConfigurationManager.getInstance().loadConfigurationFile("src/main/resources/http.json");
         Configuration conf = ConfigurationManager.getInstance().getCurrentConfiguration();
 
-        System.out.println(conf.getPort());
-        System.out.println(conf.getWebroute());
+        LOGGER.info("Using Port "+conf.getPort());
+        LOGGER.info("Using Webroute "+conf.getWebroute());
 
         try {
             ServerListenerThread serverListenerThread = new ServerListenerThread(conf.getPort(), conf.getWebroute());
