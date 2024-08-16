@@ -1,10 +1,7 @@
 package com.httpserver.core;
 
-import com.httpserver.HttpServer;
-
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.logging.Logger;
