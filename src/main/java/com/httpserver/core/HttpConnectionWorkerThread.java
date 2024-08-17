@@ -28,6 +28,13 @@ public class HttpConnectionWorkerThread extends Thread {
 
             // read the request
 
+//            // below prints the headers of the requests
+//            int d ;
+//
+//            while( ( d = inputStream.read() ) != -1 ) {
+//                System.out.print((char)d);
+//            }
+
             // write the response
             String html = "<html> <head><title> Abuso Server</title> </head> <body>This is the response returned by the abuso server </body></html>";
 
