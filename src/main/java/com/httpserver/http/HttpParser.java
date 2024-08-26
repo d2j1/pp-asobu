@@ -22,7 +22,7 @@ public class HttpParser {
         InputStreamReader isr = new InputStreamReader(inputStream, StandardCharsets.US_ASCII);
         try {
             parseRequestLine(isr, httpRequest);
-        } catch (IOException e) {
+        } catch (IOException | HttpParsingException e) {
             e.printStackTrace();
         }
         parseHeaders(isr, httpRequest);
@@ -31,7 +31,7 @@ public class HttpParser {
         return httpRequest;
     }
 
-    private void parseRequestLine(InputStreamReader isr, HttpRequest httpRequest) throws IOException {
+    private void parseRequestLine(InputStreamReader isr, HttpRequest httpRequest) throws IOException, HttpParsingException {
 
         StringBuilder processingDataBuffer = new StringBuilder();
         boolean methodParsed = false;
@@ -64,6 +64,12 @@ public class HttpParser {
 
             }else{
                 processingDataBuffer.append((char) _byte);
+
+                if(!methodParsed){
+                    if( processingDataBuffer.length() > HttpMethod.MAX_LENGTH){
+                        throw new HttpParsingException(HttpStatusCode.SERVER_ERROR_501_METHOD_NOT_IMPLEMENTED);
+                    }
+                }
             }
         }
 
