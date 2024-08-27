@@ -2,7 +2,7 @@
 
 # Asobu HTTP Server
 
-Asobu is a simple, lightweight HTTP server built from scratch using Java. It is designed to handle multiple client requests efficiently, making use of multithreading and sockets. The server can parse incoming requests, return appropriate status codes and headers, and supports various HTTP methods.
+Asobu is a simple, lightweight HTTP server built from scratch using Java. It is designed to handle multiple client requests efficiently, using multithreading and sockets. The server can parse incoming requests, return appropriate status codes and headers, and support various HTTP methods.
 
 ## Features
 
