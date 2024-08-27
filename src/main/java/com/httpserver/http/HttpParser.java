@@ -5,6 +5,15 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.logging.Logger;
+/**
+ * Class name - HttpParser
+ *
+ * <p>This is HttpParser class.  </p>
+ *
+ * @author Dhananjay
+ * @date 8/27/2024
+ * @updated 8/27/2024
+ */
 
 public class HttpParser {
 
