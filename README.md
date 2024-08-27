@@ -14,7 +14,7 @@ Asobu is a simple, lightweight HTTP server built from scratch using Java. It is 
 
 ## Technologies Used
 
-- **Java**: The core programming language used for building the server.
+- **Java**: The core programming language for building the server.
 - **Maven**: Dependency management and project build tool.
 - **Jackson Core & Databind**: Used for parsing and generating JSON data.
 
