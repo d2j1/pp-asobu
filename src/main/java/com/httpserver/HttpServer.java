@@ -18,7 +18,7 @@ public class HttpServer {
         ConfigurationManager.getInstance().loadConfigurationFile("src/main/resources/http.json");
         Configuration conf = ConfigurationManager.getInstance().getCurrentConfiguration();
 
-        LOGGER.info("Using Port "+conf.getPort());
+        LOGGER.info("Using Port "+conf.getPort() +" ");
         LOGGER.info("Using Webroute "+conf.getWebroute());
 
         try {
