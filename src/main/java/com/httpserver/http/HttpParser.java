@@ -58,7 +58,7 @@ public class HttpParser {
                     LOGGER.info("Request Line version to Process : " + processingDataBuffer.toString() );
 
                     if(!methodParsed || !requestTargetParsed){
-                        throw new HttpParsingException(HttpStatusCode.CLIENT_ERROR_400_BAD_REQUEST)
+                        throw new HttpParsingException(HttpStatusCode.CLIENT_ERROR_400_BAD_REQUEST);
                     }
 
                     return;
